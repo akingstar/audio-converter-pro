@@ -71,6 +71,13 @@ function renderFiles() {
     info.className = "file-info";
     info.textContent = `${formatSize(item.file.size)} · ${item.state}`;
 
+    const preview = document.createElement("audio");
+    preview.className = "audio-preview";
+    preview.controls = true;
+    preview.preload = "none";
+    preview.src = item.previewUrl;
+    preview.setAttribute("aria-label", `Preview ${item.file.name}`);
+
     const progress = document.createElement("div");
     progress.className = "progress";
 
@@ -82,7 +89,7 @@ function renderFiles() {
     details.className = "file-progress";
     details.textContent = item.message || "";
 
-    row.append(name, info, progress, details);
+    row.append(name, info, preview, progress, details);
 
     if (item.url) {
       const link = document.createElement("a");
@@ -100,6 +107,7 @@ function renderFiles() {
       remove.style.marginTop = "10px";
       remove.onclick = () => {
         if (item.url) URL.revokeObjectURL(item.url);
+        if (item.previewUrl) URL.revokeObjectURL(item.previewUrl);
         files.splice(index, 1);
         renderFiles();
       };
@@ -123,6 +131,7 @@ function addFiles(selected) {
       progress: 0,
       message: "",
       url: null,
+      previewUrl: URL.createObjectURL(file),
       outputName: ""
     });
   });
@@ -158,6 +167,7 @@ clearBtn.addEventListener("click", () => {
   if (converting) return;
   files.forEach(item => {
     if (item.url) URL.revokeObjectURL(item.url);
+    if (item.previewUrl) URL.revokeObjectURL(item.previewUrl);
   });
   files = [];
   renderFiles();
