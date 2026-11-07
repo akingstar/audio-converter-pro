@@ -4,6 +4,7 @@ import { fetchFile, toBlobURL } from "https://cdn.jsdelivr.net/npm/@ffmpeg/util@
 const ffmpeg = new FFmpeg();
 
 const input = document.getElementById("fileInput");
+const chooseFilesBtn = document.getElementById("chooseFilesBtn");
 const dropZone = document.getElementById("dropZone");
 const fileList = document.getElementById("fileList");
 const fileCount = document.getElementById("fileCount");
@@ -130,6 +131,7 @@ function addFiles(selected) {
   input.value = "";
 }
 
+chooseFilesBtn.addEventListener("click", () => input.click());
 input.addEventListener("change", event => addFiles(event.target.files));
 
 dropZone.addEventListener("dragover", event => {
