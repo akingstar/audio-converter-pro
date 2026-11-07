@@ -1,0 +1,106 @@
+:root {
+  --bg: #080b14;
+  --panel: #111725;
+  --border: #263044;
+  --white: #ffffff;
+  --muted: #9ba7bb;
+  --accent: #8b7cff;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--white);
+  font-family: Arial, sans-serif;
+}
+.topbar {
+  height: 72px;
+  padding: 0 7%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+}
+.brand {
+  color: white;
+  font-weight: 900;
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+.brand span:last-child { color: var(--accent); }
+.brand-icon { font-size: 25px; margin-right: 7px; }
+.private-label { color: #75e2ac; font-size: 11px; }
+.container { width: min(900px, 92%); margin: auto; }
+.hero { text-align: center; padding: 65px 10px 35px; }
+.eyebrow { color: var(--accent); font-size: 12px; letter-spacing: 3px; font-weight: bold; }
+.hero h1 { font-size: clamp(38px, 8vw, 65px); line-height: 1.08; margin: 20px 0; }
+.hero h1 span { color: var(--accent); }
+.hero p { color: var(--muted); line-height: 1.6; }
+.converter {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 25px;
+}
+.upload-area {
+  text-align: center;
+  border: 2px dashed #414c64;
+  border-radius: 14px;
+  padding: 40px 15px;
+  background: #0c1220;
+}
+.upload-icon {
+  width: 55px; height: 55px; margin: auto auto 15px;
+  border-radius: 15px; display: grid; place-items: center;
+  background: #24203f; color: #b4aaff; font-size: 32px;
+}
+.upload-area h2 { font-size: 19px; }
+.upload-area p, .upload-area small { color: var(--muted); }
+.upload-area small { display: block; margin-top: 20px; font-size: 10px; }
+#fileInput { display: none; }
+.select-button, .convert-button {
+  display: inline-block; background: var(--accent); color: white;
+  padding: 13px 22px; border-radius: 9px; font-weight: bold;
+  cursor: pointer; border: 0;
+}
+.settings { margin-top: 30px; }
+.settings h2, .queue h2 { font-size: 17px; }
+.settings-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.settings-grid label { color: var(--muted); font-size: 12px; }
+select {
+  display: block; width: 100%; margin-top: 8px;
+  padding: 13px; border-radius: 8px;
+  background: #0b1120; color: white; border: 1px solid var(--border);
+}
+.check { display: flex; gap: 10px; margin-top: 20px; color: var(--muted); font-size: 13px; }
+.queue { margin-top: 32px; }
+.queue-heading { display: flex; justify-content: space-between; align-items: center; }
+.text-button { background: none; border: 0; color: #ff8795; cursor: pointer; }
+#fileCount { color: var(--muted); }
+.empty { color: var(--muted); text-align: center; padding: 24px 5px; font-size: 13px; }
+.file-row {
+  background: #0b1120; border: 1px solid var(--border);
+  padding: 14px; border-radius: 9px; margin: 10px 0;
+}
+.file-name { font-size: 13px; overflow-wrap: anywhere; }
+.file-info, .file-progress { color: var(--muted); font-size: 11px; margin-top: 7px; }
+.progress { height: 5px; background: #30394c; margin-top: 9px; border-radius: 9px; overflow: hidden; }
+.progress span { display: block; height: 100%; width: 0; background: var(--accent); }
+.convert-button { width: 100%; margin-top: 22px; padding: 16px; font-size: 15px; }
+.convert-button:disabled { opacity: .4; cursor: not-allowed; }
+.status { text-align: center; color: var(--muted); font-size: 12px; }
+.features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin: 35px 0; }
+.features article {
+  background: var(--panel); border: 1px solid var(--border);
+  padding: 20px; border-radius: 12px;
+}
+.features article span { font-size: 24px; }
+.features h3 { font-size: 14px; }
+.features p { color: var(--muted); font-size: 12px; line-height: 1.5; }
+footer { border-top: 1px solid var(--border); padding: 25px; text-align: center; color: var(--muted); font-size: 11px; }
+@media(max-width:600px) {
+  .settings-grid { grid-template-columns: 1fr; }
+  .features { grid-template-columns: 1fr; }
+  .converter { padding: 15px; }
+  .hero { padding-top: 45px; }
+}

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080b14">
+  <meta name="description" content="AUDIO CONVERTER PRO - Convert audio files directly in your browser.">
+  <title>AUDIO CONVERTER PRO</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#">
+      <span class="brand-icon">♫</span>
+      AUDIO <span>CONVERTER PRO</span>
+    </a>
+    <span class="private-label">● 100% PRIVATE</span>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="eyebrow">POWERFUL AUDIO TOOLKIT</div>
+      <h1>Convert Audio.<br><span>Your Way.</span></h1>
+      <p>Fast, simple and secure audio conversion. Your files stay on your device.</p>
+    </section>
+
+    <section class="converter">
+      <div class="upload-area" id="dropZone">
+        <div class="upload-icon">↑</div>
+        <h2>Drop your audio files here</h2>
+        <p>or select files from your device</p>
+        <label class="select-button" for="fileInput">Choose Audio Files</label>
+        <input id="fileInput" type="file" accept="audio/*,.mp3,.wav,.flac,.m4a,.aac,.ogg,.opus,.aiff" multiple>
+        <small>MP3 · WAV · FLAC · M4A · AAC · OGG · OPUS · AIFF</small>
+      </div>
+
+      <div class="settings">
+        <h2>Conversion Settings</h2>
+        <div class="settings-grid">
+          <label>Output Format
+            <select id="format">
+              <option value="mp3">MP3</option>
+              <option value="wav">WAV</option>
+              <option value="flac">FLAC</option>
+              <option value="m4a">M4A</option>
+              <option value="aac">AAC</option>
+              <option value="ogg">OGG</option>
+              <option value="opus">OPUS</option>
+              <option value="aiff">AIFF</option>
+            </select>
+          </label>
+          <label>Audio Quality
+            <select id="bitrate">
+              <option value="128k">128 kbps</option>
+              <option value="192k" selected>192 kbps</option>
+              <option value="256k">256 kbps</option>
+              <option value="320k">320 kbps</option>
+              <option value="96k">96 kbps</option>
+            </select>
+          </label>
+          <label>Sample Rate
+            <select id="sampleRate">
+              <option value="44100">44.1 kHz</option>
+              <option value="48000">48 kHz</option>
+              <option value="96000">96 kHz</option>
+            </select>
+          </label>
+          <label>Audio Channels
+            <select id="channels">
+              <option value="2">Stereo</option>
+              <option value="1">Mono</option>
+            </select>
+          </label>
+        </div>
+        <label class="check"><input type="checkbox" id="normalize"> Normalize audio volume</label>
+      </div>
+
+      <section class="queue">
+        <div class="queue-heading">
+          <h2>Your Files <span id="fileCount">(0)</span></h2>
+          <button id="clearBtn" class="text-button">Clear All</button>
+        </div>
+        <div id="fileList">
+          <div class="empty">Your selected audio files will appear here.</div>
+        </div>
+        <button id="convertBtn" class="convert-button" disabled>Convert Audio Files</button>
+        <p class="status" id="status">Ready to convert</p>
+      </section>
+    </section>
+
+    <section class="features">
+      <article><span>⚡</span><h3>Fast Conversion</h3><p>Convert audio in your browser.</p></article>
+      <article><span>🔒</span><h3>Private & Secure</h3><p>Files are not uploaded to a server.</p></article>
+      <article><span>♫</span><h3>Multiple Formats</h3><p>Choose from popular audio formats.</p></article>
+    </section>
+  </main>
+
+  <footer>© 2026 AUDIO CONVERTER PRO · Made for audio lovers</footer>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
