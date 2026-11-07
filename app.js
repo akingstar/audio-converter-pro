@@ -166,7 +166,8 @@ async function loadEngine() {
 
   await ffmpeg.load({
     coreURL: await toBlobURL(`${base}/ffmpeg-core.js`, "text/javascript"),
-    wasmURL: await toBlobURL(`${base}/ffmpeg-core.wasm`, "application/wasm")
+    wasmURL: await toBlobURL(`${base}/ffmpeg-core.wasm`, "application/wasm"),
+    classWorkerURL: new URL("./vendor/ffmpeg/worker.js", import.meta.url).href
   });
 
   engineReady = true;
