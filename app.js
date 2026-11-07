@@ -1,5 +1,12 @@
 import { FFmpeg } from "./vendor/ffmpeg/index.js";
-import { fetchFile, toBlobURL } from "https://cdn.jsdelivr.net/npm/@ffmpeg/util@0.12.2/dist/esm/index.js";
+async function toBlobURL(url, mimeType) {
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error(`Could not load FFmpeg resource: ${response.status}`);
+  }
+  const blob = await response.blob();
+  return URL.createObjectURL(new Blob([blob], { type: mimeType }));
+}
 
 const ffmpeg = new FFmpeg();
 
@@ -187,7 +194,7 @@ async function convertOne(item, index) {
   item.message = "Preparing audio...";
   renderFiles();
 
-  await ffmpeg.writeFile(inputName, await fetchFile(item.file));
+  await ffmpeg.writeFile(inputName, new Uint8Array(await item.file.arrayBuffer()));
 
   const args = ["-i", inputName, "-vn"];
 
