@@ -16,10 +16,13 @@ const load = async ({ coreURL: _coreURL, wasmURL: _wasmURL, workerURL: _workerUR
         if (!_coreURL)
             _coreURL = CORE_URL.replace('/umd/', '/esm/');
         // when web worker type is `module`.
-        self.createFFmpegCore = (await import(
-        /* webpackIgnore: true */ /* @vite-ignore */ _coreURL)).default;
+        const coreModule = await import(
+        /* webpackIgnore: true */ /* @vite-ignore */ _coreURL);
+        self.createFFmpegCore = coreModule.default || coreModule.createFFmpegCore;
         if (!self.createFFmpegCore) {
-            throw ERROR_IMPORT_FAILURE;
+            throw new Error(
+                `FFmpeg core factory missing. URL=${_coreURL}; exports=${Object.keys(coreModule).join(",")}; default=${typeof coreModule.default}; named=${typeof coreModule.createFFmpegCore}`
+            );
         }
     }
     const coreURL = _coreURL;
