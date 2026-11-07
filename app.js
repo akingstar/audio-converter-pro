@@ -1,4 +1,4 @@
-import { FFmpeg } from "https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.10/dist/esm/index.js";
+import { FFmpeg } from "./vendor/ffmpeg/index.js";
 import { fetchFile, toBlobURL } from "https://cdn.jsdelivr.net/npm/@ffmpeg/util@0.12.2/dist/esm/index.js";
 
 const ffmpeg = new FFmpeg();
@@ -167,7 +167,6 @@ async function loadEngine() {
   await ffmpeg.load({
     coreURL: await toBlobURL(`${base}/ffmpeg-core.js`, "text/javascript"),
     wasmURL: await toBlobURL(`${base}/ffmpeg-core.wasm`, "application/wasm"),
-    classWorkerURL: new URL("./vendor/ffmpeg/worker.js", import.meta.url).href
   });
 
   engineReady = true;
