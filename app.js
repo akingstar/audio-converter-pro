@@ -169,7 +169,7 @@ async function loadEngine() {
 
   setStatus("Loading audio conversion engine. Please wait...");
 
-  const base = "https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.6/dist/umd";
+  const base = "https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.6/dist/esm";
 
   await ffmpeg.load({
     coreURL: await toBlobURL(`${base}/ffmpeg-core.js`, "text/javascript"),
