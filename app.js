@@ -172,8 +172,8 @@ async function loadEngine() {
   const base = "https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.6/dist/esm";
 
   await ffmpeg.load({
-    coreURL: await toBlobURL(`${base}/ffmpeg-core.js`, "text/javascript"),
-    wasmURL: await toBlobURL(`${base}/ffmpeg-core.wasm`, "application/wasm"),
+    coreURL: new URL("./vendor/ffmpeg/ffmpeg-core.js", import.meta.url).href,
+    wasmURL: `${base}/ffmpeg-core.wasm`,
   });
 
   engineReady = true;
