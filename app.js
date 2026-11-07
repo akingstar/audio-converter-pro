@@ -266,7 +266,7 @@ convertBtn.addEventListener("click", async () => {
     setStatus(`Finished: ${success} successful, ${failed} failed.`);
   } catch (error) {
     console.error(error);
-    setStatus("Engine loading failed. Check internet and try again.");
+    setStatus("Engine loading failed: " + (error?.message || String(error)));
   } finally {
     converting = false;
     renderFiles();
