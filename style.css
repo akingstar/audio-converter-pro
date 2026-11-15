@@ -330,3 +330,30 @@ footer {
     margin: 10px 0;
   }
 }
+
+/* Premium layer — AK aurora glass */
+.brand-icon { display: inline-flex; align-items: center; }
+.brand-icon svg { width: 30px; height: 30px; display: block; border-radius: 8px; box-shadow: 0 6px 18px rgba(148,119,255,.35); }
+@media (max-width: 650px) { .brand-icon svg { width: 24px; height: 24px; } }
+.select-button, .convert-button {
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 28px rgba(124,88,239,.28);
+}
+.select-button:after, .convert-button:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 30%, rgba(255,255,255,.32) 50%, transparent 70%);
+  transform: translateX(-130%);
+  transition: transform .6s ease;
+  pointer-events: none;
+}
+.select-button:hover:after, .convert-button:not(:disabled):hover:after { transform: translateX(130%); }
+.upload-area:hover { box-shadow: 0 0 0 3px rgba(148,119,255,.10), 0 18px 45px rgba(0,0,0,.35); }
+::selection { background: rgba(148,119,255,.4); color: #fff; }
+:focus-visible { outline: 2px solid rgba(175,145,255,.8); outline-offset: 3px; }
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb { background: linear-gradient(180deg,#9477ff,#bd75ff); border-radius: 99px; border: 3px solid transparent; background-clip: padding-box; }
+::-webkit-scrollbar-track { background: transparent; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; } }
